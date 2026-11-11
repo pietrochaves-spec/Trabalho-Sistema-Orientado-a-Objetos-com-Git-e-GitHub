@@ -1,1 +1,1 @@
-# Trabalho-Sistema-Orientado-a-Objetos-com-Git-e-GitHub
+# poo-grupo7-loja-de-eletronicos
