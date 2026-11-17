@@ -40,3 +40,12 @@ class Produto:
         if valor < 0:
             raise ValueError("O estoque não pode ser negativo.")
         self.__estoque = valor
+
+    def calcular_preco_final(self):
+        return self.preco
+
+    def __str__(self):
+        return (
+            f"[{self.codigo}] {self.nome} | "
+            f"Preço: R$ {self.preco:.2f} | Estoque: {self.estoque}"
+        )
