@@ -1,13 +1,15 @@
 # poo-grupo7-loja-de-eletronicos
 
 ## Tema
-Protótipo de terminal em Python criado para validar a estrutura de dados do estoque de uma loja de eletrônicos antes de investir em um sistema completo. Organizado em classes (`Produto`, `Celular`, `Notebook` e `Loja`), o sistema permite cadastrar, listar, buscar itens e calcular seus preços finais conforme o tipo, aplicando desconto à vista para celulares e frete por peso para notebooks.
+Protótipo de terminal em Python criado para validar a estrutura de dados do estoque de uma loja de eletrônicos antes de investir em um sistema completo. Organizado em classes (`Produto`, `Celular`, `notebook.py` e `Loja`), o sistema permite cadastrar, listar, buscar itens e calcular seus preços finais conforme o tipo, aplicando desconto à vista para celulares e frete por peso para notebooks.
+
 
 ## Integrantes
 - Pedro Rogério
 - Alison Waldmann
 - Pietro Chaves
 - João Neja
+
 
 ## Descrição das Classes
 - **Produto** (produto.py): Classe base com atributos privados validados via @property (código, nome não vazio, preço maior que zero e estoque não negativo). Define o método calcular_preco_final(), retornando o preço original.
@@ -69,3 +71,30 @@ Legenda: ^ indica herança (Celular e Notebook herdam de Produto) e <>
 indica que a Loja guarda uma lista com vários Produto (1 para 0..*).
 
 
+## Como executar
+(O programa usa apenas a biblioteca padrão do Python, então não é preciso instalar nada além do próprio Python.)
+
+
+- Instale o Python 3.10 ou superior (confira com python --version).
+- Clone o repositório: git clone <link-do-repositorio>
+- Entre na pasta do projeto: cd loja-eletronicos
+- Execute o programa: python main.py (em Linux ou Mac, use python3 main.py)
+
+Use o menu da loja digitando o número da opção desejada:
+- 1: cadastrar celular
+- 2: cadastrar notebook
+- 3: listar produtos
+- 4: buscar produto por código ou parte do nome
+- 5: calcular o preço final de cada produto (polimorfismo)
+- 0: sair
+Para executar pelo PyCharm, abra a pasta do projeto, abra o arquivo main.py e clique em Run.
+
+Os arquivos produto.py, celular.py, notebook.py e loja.py precisam ficar na mesma pasta do main.py.
+
+
+## Estrutura de arquivos
+- **celular.py** → Alison Waldmann
+- **loja.py** → João Neja
+- **notebook.py** → Pietro Chaves
+- **produto.py** → Pedro Rogério
+- **main.py** → Pedro Rogério
