@@ -17,3 +17,55 @@ Protótipo de terminal em Python criado para validar a estrutura de dados do est
 - **Notebook** (notebook.py): Herda de Produto, adicionando memória RAM, peso e o método classificar_desempenho(). Sobrescreve o cálculo de preço final somando frete de R$ 15,00 por kg.
 
 - **Loja** (loja.py): Classe gerenciadora do catálogo, responsável por cadastrar, listar, buscar itens (por código ou nome) e aplicar o polimorfismo ao calcular o preço final de diferentes tipos de produtos em conjunto.
+
+
+## Diagrama de classes
+
+
+                          +------------------------------+
+                          |             Loja             |
+                          +------------------------------+
+                          | - __nome                     |
+                          | - __produtos : list          |
+                          | - __proximo_codigo           |
+                          +------------------------------+
+                          | + cadastrar_produto()        |
+                          | + listar_produtos()          |
+                          | + buscar_produto()           |
+                          | + calcular_precos_finais()   |
+                          | + __str__()                  |
+                          +------------------------------+
+                                          <> 1
+                                          |
+                                          | 0..*
+                          +------------------------------+
+                          |           Produto            |
+                          +------------------------------+
+                          | - __codigo                   |
+                          | - __nome                     |
+                          | - __preco                    |
+                          | - __estoque                  |
+                          +------------------------------+
+                          | + calcular_preco_final()     |
+                          | + __str__()                  |
+                          +------------------------------+
+                                          ^
+                                          |
+                        +-----------------+-----------------+
+                        |                                   |
+        +------------------------------+    +------------------------------+
+        |           Celular            |    |           Notebook           |
+        +------------------------------+    +------------------------------+
+        | - __armazenamento_gb         |    | - __memoria_ram_gb           |
+        | - __possui_5g                |    | - __peso_kg                  |
+        +------------------------------+    +------------------------------+
+        | + calcular_preco_final()     |    | + calcular_preco_final()     |
+        | + calcular_parcela()         |    | + classificar_desempenho()   |
+        | + __str__()                  |    | + __str__()                  |
+        +------------------------------+    +------------------------------+
+
+
+Legenda: ^ indica herança (Celular e Notebook herdam de Produto) e <>
+indica que a Loja guarda uma lista com vários Produto (1 para 0..*).
+
+
