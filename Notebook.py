@@ -25,3 +25,28 @@ class Notebook(Produto):
         super().__init__(codigo, nome, preco, estoque)
         self.memoria_ram_gb = memoria_ram_gb
         self.peso_kg = peso_kg
+
+
+    @property
+    def memoria_ram_gb(self):
+        """Retorna a memória RAM em GB."""
+        return self.__memoria_ram_gb
+
+    @memoria_ram_gb.setter
+    def memoria_ram_gb(self, valor):
+        """Define a memória RAM, recusando valores menores ou iguais a zero."""
+        if valor <= 0:
+            raise ValueError("A memória RAM deve ser maior que zero.")
+        self.__memoria_ram_gb = valor
+
+    @property
+    def peso_kg(self):
+        """Retorna o peso do notebook em quilos."""
+        return self.__peso_kg
+
+    @peso_kg.setter
+    def peso_kg(self, valor):
+        """Define o peso, recusando valores menores ou iguais a zero."""
+        if valor <= 0:
+            raise ValueError("O peso deve ser maior que zero.")
+        self.__peso_kg = valor
