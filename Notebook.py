@@ -50,3 +50,28 @@ class Notebook(Produto):
         if valor <= 0:
             raise ValueError("O peso deve ser maior que zero.")
         self.__peso_kg = valor
+
+    def calcular_preco_final(self):
+        """Calcula o preço final do notebook, somando o frete por peso.
+
+        Returns:
+            float: preço do produto mais o frete.
+        """
+        return self.preco + self.peso_kg * self.FRETE_POR_KG
+
+    def classificar_desempenho(self):
+        """Classifica o desempenho pela memória RAM (método próprio de Notebook).
+
+        Returns:
+            str: "Alto desempenho", "Intermediário" ou "Básico".
+        """
+        if self.memoria_ram_gb >= 16:
+            return "Alto desempenho"
+        if self.memoria_ram_gb >= 8:
+            return "Intermediário"
+        return "Básico"
+
+    def __str__(self):
+        """Retorna os dados do notebook em texto legível."""
+        return (f"{super().__str__()} | Notebook | RAM: {self.memoria_ram_gb} GB | "
+                f"Peso: {self.peso_kg} kg | {self.classificar_desempenho()}")
