@@ -37,3 +37,21 @@ class Loja:
     def proximo_codigo(self):
         """Retorna o código que será dado ao próximo produto cadastrado."""
         return self.__proximo_codigo
+
+    def cadastrar_produto(self, produto):
+        """Adiciona um produto (ou qualquer filho de Produto) à lista da loja.
+
+        Args:
+            produto (Produto): objeto a ser cadastrado.
+
+        Raises:
+            TypeError: se o objeto não for um Produto.
+        """
+        if not isinstance(produto, Produto):
+            raise TypeError("Só é possível cadastrar objetos do tipo Produto.")
+        self.__produtos.append(produto)
+        self.__proximo_codigo += 1
+
+    def listar_produtos(self):
+        """Retorna a lista com todos os produtos cadastrados."""
+        return self.produtos
