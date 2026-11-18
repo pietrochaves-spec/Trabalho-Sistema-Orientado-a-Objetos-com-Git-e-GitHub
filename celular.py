@@ -50,3 +50,30 @@ class Celular(Produto):
             if not isinstance(valor, bool):
                 raise ValueError("O suporte a 5G deve ser verdadeiro ou falso.")
             self.__possui_5g = valor
+
+        def calcular_preco_final(self):
+            """Calcula o preço final do celular, com 5% de desconto à vista.
+
+            Returns:
+                float: preço com desconto aplicado.
+            """
+            return self.preco * (1 - self.DESCONTO_A_VISTA)
+
+        def calcular_parcela(self, numero_parcelas):
+            """Calcula o valor de cada parcela sem juros (método próprio de Celular).
+
+            Args:
+                numero_parcelas (int): quantidade de parcelas (maior que zero).
+
+            Returns:
+                float: valor de cada parcela.
+            """
+            if numero_parcelas <= 0:
+                raise ValueError("O número de parcelas deve ser maior que zero.")
+            return self.preco / numero_parcelas
+
+        def __str__(self):
+            """Retorna os dados do celular em texto legível."""
+            suporte = "Sim" if self.possui_5g else "Não"
+            return (f"{super().__str__()} | Celular | "
+                    f"{self.armazenamento_gb} GB | 5G: {suporte}")
