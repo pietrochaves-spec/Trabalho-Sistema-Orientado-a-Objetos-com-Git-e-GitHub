@@ -26,3 +26,27 @@ class Celular(Produto):
         super().__init__(codigo, nome, preco, estoque)
         self.armazenamento_gb = armazenamento_gb
         self.possui_5g = possui_5g
+
+        @property
+        def armazenamento_gb(self):
+            """Retorna o armazenamento interno em GB."""
+            return self.__armazenamento_gb
+
+        @armazenamento_gb.setter
+        def armazenamento_gb(self, valor):
+            """Define o armazenamento, recusando valores menores ou iguais a zero."""
+            if valor <= 0:
+                raise ValueError("O armazenamento deve ser maior que zero.")
+            self.__armazenamento_gb = valor
+
+        @property
+        def possui_5g(self):
+            """Retorna True se o celular tem suporte a 5G."""
+            return self.__possui_5g
+
+        @possui_5g.setter
+        def possui_5g(self, valor):
+            """Define o suporte a 5G, aceitando apenas True ou False."""
+            if not isinstance(valor, bool):
+                raise ValueError("O suporte a 5G deve ser verdadeiro ou falso.")
+            self.__possui_5g = valor
