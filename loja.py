@@ -55,3 +55,40 @@ class Loja:
     def listar_produtos(self):
         """Retorna a lista com todos os produtos cadastrados."""
         return self.produtos
+
+    def buscar_produto(self, termo):
+        """Busca produtos pelo código exato ou por parte do nome.
+
+        Args:
+            termo (str): código ou trecho do nome (sem diferenciar maiúsculas).
+
+        Returns:
+            list: produtos encontrados (lista vazia se nenhum for encontrado).
+        """
+        termo = termo.strip().lower()
+        if not termo:
+            return []
+        encontrados = []
+        for produto in self.__produtos:
+            if termo == str(produto.codigo) or termo in produto.nome.lower():
+                encontrados.append(produto)
+        return encontrados
+
+    def calcular_precos_finais(self):
+        """Executa a ação polimórfica: calcula o preço final de cada produto.
+
+        Percorre a lista com objetos de tipos diferentes (Celular, Notebook...)
+        e chama o mesmo método, calcular_preco_final(). Cada objeto responde
+        com a sua própria regra.
+
+        Returns:
+            list: tuplas (produto, preço final).
+        """
+        resultados = []
+        for produto in self.__produtos:
+            resultados.append((produto, produto.calcular_preco_final()))
+        return resultados
+
+    def __str__(self):
+        """Retorna o resumo da loja em texto legível."""
+        return f"Loja {self.nome} | {len(self.__produtos)} produto(s) cadastrado(s)"
